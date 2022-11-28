@@ -72,12 +72,13 @@ export default {
     },
     //findById
     async findOne(request: Request, response: Response) {
-        const { id } = request.params;
-        const produto = await Produto.find({
-            $or: [{ _id: id }],
+        const id = request.params.id as string;
+        const id_ = parseInt(id)
+        const produto = await Produto.findOne({
+            id: id_
         });
         if (produto) {
-            return response.status(200).json(produto);
+            return response.status(200).json({produto});
         }
         return response.status(400).json({ message: 'Produto nao encontrado' });
     },

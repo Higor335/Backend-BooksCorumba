@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 export interface ProdutoInteface {
-    id:string,
+    id: number,
     titulo: string;
     autor: string;
     data: string;
@@ -11,7 +11,7 @@ export interface ProdutoInteface {
 }
 const produtoSchema = new Schema(
     {
-        id: String,
+        id: Number,
         titulo: String,
         autor: String,
         data: String,
