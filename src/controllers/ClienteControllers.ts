@@ -67,4 +67,14 @@ export default {
         }
         return response.status(400).json({ message: 'Cliente nao encontrado' });
     },
+
+    //findById
+    async login(request: Request, response: Response) {
+        const { email, pass } = request.params;
+        const cliente = await Cliente.findOne({email, senha: pass});
+        if (cliente) {
+            return response.status(200).json(cliente);
+        }
+        return response.status(400).json({ message: 'Cliente nao encontrado' });
+    },
 };
